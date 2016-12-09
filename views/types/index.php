@@ -1,11 +1,11 @@
-<h2>Listado de tipos</h2>
-<!-- <h3>Número de usuarios: <?php //echo $usersCount; ?></h3> -->
+<h2>Tipos</h2>
 
-<table>
+
+<table id="tabla">
 	<tr>
-		<th>ID</th>
+		<th>Id</th>
 		<th>Name</th>
-		<th><th>Action</th></th><th></th>
+		<th>Action</th>
 	</tr>
 
 <?php foreach ($types as $type): ?>
@@ -14,12 +14,8 @@
 	<td><?php echo $type["types"]["name"]; ?></td>
 	<td>
 		<a href="<?php echo APP_URL."/types/edit/".$type["types"]["id"]; ?>">Edit</a>
-	</td>
-	<td>
 		<a href="<?php echo APP_URL."/types/delete/".$type["types"]["id"]; ?>">Delete</a>
-	</td>
-	<td>
-		<a href="<?php echo APP_URL."/types/add/".$type["types"]["id"]; ?>">Add</a></li>
+
 	</td>
 </tr>
 <?php endforeach; ?>

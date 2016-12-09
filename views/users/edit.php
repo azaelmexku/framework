@@ -8,37 +8,37 @@
 		<input type="text" name="username" value = "<?php echo $user["username"]; ?>">
 	</p>
 	<p>
-		<label for="Newpassword">Password</label>
-		<input type="password" name="newPassword">
+		<label for="NewPassword">Password</label>
+		<input type="password" name="NewPassword">
 	</p>
 		<p>
 		<label for="type_id">Type</label>
-			<select name="type_id" id="type_id">
-				<?php 
-				foreach ($types as $type):
-					if ($type["types"]["id"]==$user["type_id"]) {
-				?>
-						<option selected value = "<?php echo $type["types"] ["id"]; ?>">
-							<?php 
-								echo $type["types"] ["name"];
-							 ?>
-						</option>
-				<?php 
-					}else{ 
-				?>
-						<option value = "<?php echo $type["types"] ["id"]; ?>">
-							<?php 
-								echo $type["types"] ["name"];
-							 ?>
-						</option>
-				<?php 
-					}  
-				?>
-				 				
-				<?php 
-				endforeach 
-				?>
-			</select>
+		<select name="type_id" id="type_id">
+			<?php 
+			foreach ($types as $type):
+				if ($type["types"]["id"]==$user["type_id"]) {
+			?>
+					<option selected value = "<?php echo $type["types"] ["id"]; ?>">
+					<?php 
+						echo $type["types"] ["name"];
+					 ?>
+				</option>
+			<?php 
+				}else{ 
+			?>
+				<option value = "<?php echo $type["types"] ["id"]; ?>">
+					<?php 
+						echo $type["types"] ["name"];
+					 ?>
+				</option>
+			<?php 
+				}  
+			?>
+			 				
+			<?php 
+			endforeach 
+			?>
+		</select>
 	</p>
 	<p>
 		<input type="submit" >

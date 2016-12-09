@@ -1,7 +1,5 @@
 <?php 
-
-class TypesController extends AppController { 
-
+class typesController extends AppController {
 
 	public function __construct(){
 		parent::__construct();
@@ -10,6 +8,7 @@ class TypesController extends AppController {
 	public function index(){
 		//opcion 1
 		$options= array(
+			
 			);
 
 		$this->set("types", 
@@ -19,35 +18,31 @@ class TypesController extends AppController {
 				$options
 				)
 			);
-		
-
-
-		//opcion 2
-		// $users =  $this->users->find("users", "all", $options);
-		// $this->set("users",$users);
-
 	}
+
 
 	public function add(){
 
 		if ($_SESSION["type_name"]=="Administradores") {
 			if ($_POST) {
+				//$pass = new Password();
+				//$_POST["password"] = $pass->getPassword($_POST["password"]);
 				if ($this->types->save("types", $_POST)){
 					$this->redirect(array("controller"=>"types"));
 				}else{
-					$this->redirect(array("controller"=>"types","method"=>"add"));				
+					$this->redirect(array("controller"=>"users","method"=>"add"));				
 				}
 			}
 			$this->set("types", $this->types->find("types"));
 		}else{
-			$this->redirect(array("controller"=>"types"));
+			$this->redirect(array("controller"=>"users"));
 			}
 		}
 
-
-
 	public function edit($id){
 		if ($_POST) {
+			
+			
 			if ($this->types->update("types", $_POST)) {
 				$this->redirect(array("controller"=> "types"));
 			}else{
@@ -72,11 +67,8 @@ class TypesController extends AppController {
 	public function delete($id){
 		$options = "types.id=".$id;
 		if($this->types->delete("types", $options)){
-
 			$this->redirect(array("controller"=>"types"));
 		}
 
 	}
 }
-
-?>

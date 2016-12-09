@@ -1,32 +1,47 @@
-<h2>Listado de usuarios</h2>
-<h3>Número de usuarios: <?php echo $usersCount; ?></h3>
+<div class="row">
+	<div class="col-xs-12">
+		
+	</div>
+</div>
+<h2>Usuarios</h2>
+<div class="table-responsive">
+	<table class="table table-striped"> 
+		<tr>
+			<th>ID</th>
+			<th>username</th>
+			<th>Password</th>
+			<th>Type</th>
+			<th>Action</th>
+		</tr>
 
-<table>
+	<?php foreach ($users as $user): ?>
 	<tr>
-		<th>ID</th>
-		<th>username</th>
-		<th>Password</th>
-		<th>Type</th>
-		<th><th>Action</th></th><th></th>
+		<td><?php echo $user["users"]["id"]; ?></td>
+		<td><?php echo $user["users"]["username"]; ?></td>
+		<td><?php echo $user["users"]["password"]; ?></td>
+		<td><?php echo $user["types"]["name"]; ?></td>
+		<td>
+
+			<?php
+				echo $this->Html->link(
+					"<span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span>", "/users/edit/".$user["users"]["id"],
+					array(
+						"title"=>"Editar usuario",
+						"target"=>"_blank"
+					)
+				);
+			?>
+			<?php
+				echo $this->Html->link(
+					"Delete", 
+					"/users/delete/".$user["users"]["id"]
+					
+				);
+			?>
+			
+		</td>
 	</tr>
+	<?php endforeach; ?>
 
-<?php foreach ($users as $user): ?>
-<tr>
-	<td><?php echo $user["users"]["id"]; ?></td>
-	<td><?php echo $user["users"]["username"]; ?></td>
-	<td><?php echo $user["users"]["password"]; ?></td>
-	<td><?php echo $user["types"]["name"]; ?></td>
-	<td>
-		<a href="<?php echo APP_URL."/users/edit/".$user["users"]["id"]; ?>">Edit</a>
-	</td>
-	<td>
-		<a href="<?php echo APP_URL."/users/delete/".$user["users"]["id"]; ?>">Delete</a>
-	</td>
-	<td>
-		<a href="<?php echo APP_URL."/users/add/".$user["users"]["id"]; ?>">Add</a></li>
-	</td>
-
-</tr>
-<?php endforeach; ?>
-
-</table>
+	</table>
+</div>
